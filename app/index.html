@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-app="myApp">
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="app.js"></script>
+<script src="controller/watsonController.js"></script>
+<script src="components/version/version.js"></script>
+<script src="components/version/version-directive.js"></script>
+<script src="components/version/interpolate-filter.js"></script>
+<script type="text/javascript" src="bower_components/angular-google-chart/ng-google-chart.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+<div ng-controller="watsonController">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-2">
+            <div class="panel panel-success">
+                <div class="panel-heading"><h1 class="panel-title text-center">Watson Tone Analyzer</h1></div>
+                <div class="panel-body">
+                    <form ng-submit="sendPost()" name="form" class="form-horizontal">
+                        <div class="control-group">
+                            <label class="control-label" for="textAreaConversation">Conversation:</label>
+                            <textarea rows="1" ng-model="conversation"
+                                      class="form-control"></textarea>
+                            <p></p>
+                            <button type="submit" class="btn btn-default form-control">Watson Analyze!</button>
+                            <p></p>
+                            <div google-chart chart="myEmotionObject" style="height:130px; width:90%;"
+                                 ng-show="myEmotionObject.data.length > 1" class="form-control" align="center"></div>
+                            <div google-chart chart="myWritingObject" style="height:110px; width:90%;"
+                                 ng-show="myWritingObject.data.length > 1" class="form-control" align="center"></div>
+                            <div google-chart chart="mySocialObject" style="height:130px; width:90%;"
+                                 ng-show="mySocialObject.data.length > 1" class="form-control" align="center"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
